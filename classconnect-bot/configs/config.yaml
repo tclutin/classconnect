@@ -1,0 +1,5 @@
+token: "6620119138:AAHLn6MpNi30KGl0oxdwwR_DtoWOJVWv8ls"
+api:
+  base_url: "http://app:8080/api/v1/"
+  username: "telegram"
+  password: "oM0nK8-L6f"
