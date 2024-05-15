@@ -57,7 +57,8 @@ func main() {
 	for {
 		select {
 		case <-ticker.C:
-			currentTime := time.Now()
+			timezone, _ := time.LoadLocation("Asia/Yekaterinburg")
+			currentTime := time.Now().In(timezone)
 			subjects, err := scheduleRepository.GetSubjectsWithDetail(context.TODO(), utils.GetDayOfWeek(), utils.IsEvenWeek(), currentTime)
 			if err != nil {
 				slog.Error("an error occurred while receiving the data", slog.Any("error", err))
