@@ -17,11 +17,32 @@ services:
       - "8080:8080"
     depends_on:
       - db
-  notification_service:
-    restart: always
-    build: ./classconnect-notification-service
-    depends_on:
-      - db
+#  notification_service:
+#    restart: always
+#    build: ./classconnect-notification-service
+#    depends_on:
+#      - db
   bot:
     restart: always
     build: ./classconnect-bot
+  classconnect-interface:
+    build:
+      context: ./classconnect-interface
+      dockerfile: Dockerfile
+    volumes:
+      - ./classconnect-interface:/var/www/html
+    depends_on:
+      - db
+      - app
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./classconnect-interface:/var/www/html
+      - ./classconnect-interface/nginx:/etc/nginx/conf.d
+    depends_on:
+      - classconnect-interface
+      - db
+      - app
+
