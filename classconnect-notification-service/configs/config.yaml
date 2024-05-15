@@ -1,0 +1,14 @@
+env: "dev"
+external_delay: 1
+internal_delay: 5
+http:
+  port: "8083"
+  host: "localhost"
+postgres:
+  port: "5432"
+  host: "db"
+  user: "postgres"
+  password: "postgres"
+  db_name: "classconnect-api"
+telegram:
+  bot_token: "6620119138:AAHLn6MpNi30KGl0oxdwwR_DtoWOJVWv8ls"
